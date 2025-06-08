@@ -1,0 +1,6 @@
+# Ignorar a base de dados local
+chroma_db/
+
+# Ignorar arquivos de cache do Python
+__pycache__/
+*.pyc
