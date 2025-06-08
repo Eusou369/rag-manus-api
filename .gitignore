@@ -4,3 +4,6 @@ chroma_db/
 # Ignorar arquivos de cache do Python
 __pycache__/
 *.pyc
+
+# Ignorar arquivos de segredos e variáveis de ambiente
+.env
