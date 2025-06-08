@@ -1,20 +1,14 @@
-# Usa uma imagem Python oficial como base
-FROM python:3.11-slim
+# Usa uma imagem base leve com Python 3.10
+FROM python:3.10-slim
 
 # Define o diretório de trabalho dentro do contêiner
 WORKDIR /app
 
-# Copia o arquivo de dependências para o contêiner
-COPY requirements.txt requirements.txt
-
-# Instala as dependências
-RUN pip install --no-cache-dir --upgrade -r requirements.txt
-
-# Copia TODOS os arquivos do projeto para o contêiner
+# Copia todos os arquivos do seu projeto para dentro do contêiner
 COPY . .
 
-# Dá permissão de execução para o script de inicialização
-RUN chmod +x startup.sh
+# Instala as bibliotecas Python listadas no requirements.txt
+RUN pip install --no-cache-dir -r requirements.txt
 
-# Comando padrão para iniciar a aplicação via script
-CMD ["./startup.sh"]
+# O comando que será executado para iniciar a API
+CMD ["uvicorn", "2_iniciar_api_perguntas:app", "--host", "0.0.0.0", "--port", "7860"]
